@@ -3,13 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Record Sounds View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecordSoundsViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -31,6 +32,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8o-Fh-itx">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="g4g-20-E4v"/>
+                                    <constraint firstAttribute="width" constant="105" id="yEm-2z-VOh"/>
+                                </constraints>
                                 <state key="normal" image="Stop"/>
                                 <connections>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3zA-kD-R8d"/>
@@ -39,12 +44,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="q8o-Fh-itx" firstAttribute="top" secondItem="1iJ-Uc-n06" secondAttribute="bottom" constant="8" id="27p-fg-IXX"/>
                             <constraint firstItem="1iJ-Uc-n06" firstAttribute="top" secondItem="wFQ-Lg-2qk" secondAttribute="bottom" constant="8" id="9fa-gM-p3q"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="q8o-Fh-itx" secondAttribute="bottom" constant="114" id="F7h-w7-DLd"/>
                             <constraint firstItem="wFQ-Lg-2qk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MYN-7j-Ckv"/>
                             <constraint firstItem="1iJ-Uc-n06" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SCh-Wv-ykQ"/>
                             <constraint firstItem="wFQ-Lg-2qk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XtP-cp-u0K"/>
-                            <constraint firstItem="q8o-Fh-itx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xKN-iq-GXW"/>
+                            <constraint firstItem="q8o-Fh-itx" firstAttribute="top" secondItem="1iJ-Uc-n06" secondAttribute="bottom" constant="7" id="u3m-We-YdH"/>
+                            <constraint firstItem="q8o-Fh-itx" firstAttribute="centerX" secondItem="1iJ-Uc-n06" secondAttribute="centerX" id="xZc-lk-9lT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="apG-Fm-xvb"/>
@@ -52,11 +58,42 @@
                         <outlet property="recordButton" destination="wFQ-Lg-2qk" id="HrX-ZZ-pxh"/>
                         <outlet property="recordingLabel" destination="1iJ-Uc-n06" id="3Kz-mv-gQ4"/>
                         <outlet property="stopRecordingButton" destination="q8o-Fh-itx" id="tBk-IB-2cK"/>
+                        <segue destination="6ki-U4-HDF" kind="show" identifier="stopRecording" id="lR3-AV-lqd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="972" y="38.23088455772114"/>
+        </scene>
+        <!--Play Sounds View Controller-->
+        <scene sceneID="Xj8-Lk-f1R">
+            <objects>
+                <viewController id="6ki-U4-HDF" customClass="PlaySoundsViewController" customModule="PitchPerfect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9XP-oK-MiY"/>
+                        <viewControllerLayoutGuide type="bottom" id="T5Z-K4-3c2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tsZ-9b-dg9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Exj-rN-MLe">
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nCM-hT-uUO"/>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="T5Z-K4-3c2" firstAttribute="top" secondItem="Exj-rN-MLe" secondAttribute="bottom" id="Ega-d6-Wy7"/>
+                            <constraint firstItem="Exj-rN-MLe" firstAttribute="leading" secondItem="tsZ-9b-dg9" secondAttribute="leadingMargin" id="rVZ-q6-has"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Exj-rN-MLe" secondAttribute="trailing" id="sUy-dY-vO5"/>
+                            <constraint firstItem="Exj-rN-MLe" firstAttribute="top" secondItem="9XP-oK-MiY" secondAttribute="bottom" id="z0h-Ug-qU4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3v-nE-eLs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1990" y="38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UYi-eu-oqW">
